@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build output
+frontend/dist/
+backend/dist/
+
+# local database + env
+backend/data/
+*.db
+*.db-journal
+*.db-wal
+.env
+.env.local
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

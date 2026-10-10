@@ -1,0 +1,16 @@
+{
+  "name": "truckify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Truckify - event-based food truck booking platform (React + Tailwind CSS | Node.js + Express | SQLite/PostgreSQL | JWT RBAC)",
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix frontend install && npm --prefix backend run db:reset",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "start:backend": "npm --prefix backend start",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:api": "npm --prefix backend run test:api"
+  },
+  "keywords": ["food-truck", "booking", "event-management", "react", "express", "postgresql"],
+  "license": "MIT"
+}

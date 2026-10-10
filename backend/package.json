@@ -1,0 +1,33 @@
+{
+  "name": "truckify-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Truckify REST API - event-based food truck booking platform (Node.js + Express + SQLite/PostgreSQL schema)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
+    "db:reset": "node src/db/migrate.js --reset && node src/db/seed.js",
+    "test:api": "node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "comments": {
+    "database": "Uses Node's built-in SQLite driver (node:sqlite) so there is zero native build step. For PostgreSQL, run /database/schema.postgres.sql, add `pg`, and replace src/db/index.js - the SQL is already PostgreSQL-compatible."
+  }
+}
