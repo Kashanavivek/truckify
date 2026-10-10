@@ -7,7 +7,9 @@
     "setup": "npm --prefix backend install && npm --prefix frontend install && npm --prefix backend run db:reset",
     "dev:backend": "npm --prefix backend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
+    "start": "npm --prefix backend start",
     "start:backend": "npm --prefix backend start",
+    "build": "npm --prefix frontend run build",
     "build:frontend": "npm --prefix frontend run build",
     "test:api": "npm --prefix backend run test:api"
   },

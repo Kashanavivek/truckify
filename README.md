@@ -190,4 +190,37 @@ npm run test:api
 
 ---
 
+## 9. Deploying to Render
+
+This repository includes a `render.yaml` blueprint for deploying both backend and frontend on Render.
+
+### Option A: One-Click Blueprint (Recommended)
+1. In the [Render Dashboard](https://dashboard.render.com/), click **New +** → **Blueprint**.
+2. Connect your `truckify` GitHub repository.
+3. Render will read `render.yaml` and automatically configure:
+   - **`truckify-backend`** (Node.js 22 Web Service)
+   - **`truckify-frontend`** (Static Site with React Router SPA rewrite)
+4. Click **Apply**.
+
+### Option B: Manual Setup on Render
+1. **Backend Web Service**:
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Environment Variables**:
+     - `NODE_VERSION` = `22.14.0` *(required for built-in `node:sqlite`)*
+     - `NODE_ENV` = `production`
+     - `JWT_SECRET` = `(your-secret-key)`
+     - `CORS_ORIGIN` = `*` *(or your frontend URL)*
+2. **Frontend Static Site**:
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+   - **Environment Variables**:
+     - `VITE_API_URL` = `https://<your-backend-service-name>.onrender.com/api`
+   - **Redirects / Rewrites**:
+     - `/*` → `/index.html` *(Rewrite)*
+
+---
+
 MIT licensed — built as an academic full-stack project reference implementation.

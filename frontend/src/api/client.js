@@ -3,7 +3,11 @@
  * In dev, Vite proxies /api to the Express server (see vite.config.js).
  * Set VITE_API_URL for a deployed backend.
  */
-const BASE = import.meta.env.VITE_API_URL || '/api';
+let rawBase = (import.meta.env.VITE_API_URL || '/api').trim().replace(/\/+$/, '');
+if (rawBase.startsWith('http') && !rawBase.endsWith('/api')) {
+  rawBase += '/api';
+}
+const BASE = rawBase;
 const TOKEN_KEY = 'truckify_token';
 
 export const tokenStore = {

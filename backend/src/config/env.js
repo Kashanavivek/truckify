@@ -13,7 +13,7 @@ const env = {
   sqliteFile: process.env.SQLITE_FILE
     ? path.resolve(process.cwd(), process.env.SQLITE_FILE)
     : path.resolve(__dirname, '../../data/truckify.db'),
-  corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:5173')
+  corsOrigin: (process.env.CORS_ORIGIN || '*,http://localhost:5173')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean),
@@ -21,7 +21,8 @@ const env = {
 };
 
 if (env.nodeEnv === 'production' && env.jwtSecret === 'truckify-dev-secret-change-me') {
-  throw new Error('JWT_SECRET must be set to a strong value in production.');
+  console.warn('[SECURITY] JWT_SECRET was not set in production. Using an auto-generated secret for this session. Set JWT_SECRET in Render environment variables for persistent logins.');
+  env.jwtSecret = require('crypto').randomBytes(32).toString('hex');
 }
 
 module.exports = env;
