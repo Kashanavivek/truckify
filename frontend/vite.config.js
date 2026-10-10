@@ -5,6 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    host: true,
+    allowedHosts: true,
     proxy: {
       // dev: the SPA calls /api/* and Vite forwards it to the Express server
       '/api': {
