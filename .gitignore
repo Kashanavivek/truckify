@@ -8,8 +8,14 @@ backend/dist/
 # local database + env
 backend/data/
 *.db
+
+# Allow Truckify production database
+!backend/data/
+!backend/data/truckify.db
+
 *.db-journal
 *.db-wal
+
 .env
 .env.local
 
